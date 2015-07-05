@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+FILE_NAME="$(cd $(dirname "$0")/../..; pwd)/.githooks/$(basename "$0")"
+if [ -f "${FILE_NAME}" ]; then
+  if [ "${GIT_HOOK_HOOK_PROMPT:-}" = "YES" ]; then
+    exec < /dev/tty
+    while true; do
+      read -p "Do you wish to run the git hook '${FILE_NAME}'? (Y/n) " yn
+      case ${yn} in
+        [Yy]* ) break;;
+        [Nn]* ) echo "Hook not run"; exit;;
+        * ) ;;
+      esac
+    done
+  fi
+  echo "Running hook: '${FILE_NAME}'"
+  ${FILE_NAME}
+fi
