@@ -8,13 +8,13 @@ Usually hooks are stored in `.git/hooks`, which is not under version control. Gi
 If other people have access to your repo they will be able to check in code that is run on your machine when you run git commands!
 
 ### Usage
-Copy the `git-hook-hooks-template` directory somewhere on your hard drive, for example:
+Clone the `git-hook-hooks-template` directory somewhere on your hard drive, for example:
 
-    $ cp -R git-hook-hooks-template/ ~/.git-hook-hooks-template/
+    git clone https://github.com/therealbnut/git-hook-hook.git ~/.ghh
 
-Then change your `.gitconfig` to point your template directory:
+Then change your `.gitconfig` to point the template directory:
 
-    git config --global init.templatedir '~/.git-hook-hooks-template'
+    git config --global init.templatedir '~/.ghh/template'
 
 Add any new scripts you want to run under the `.githooks/` directory.
 
